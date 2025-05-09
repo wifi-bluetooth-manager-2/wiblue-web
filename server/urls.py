@@ -30,5 +30,6 @@ urlpatterns = [
     re_path(r'change_password', change_password),
     re_path(r'change_username', change_username),
     re_path(r'add_stats', add_network_stat),
-    path('get_stats/<int:user_id>', get_network_stats_by_user, name='get_network_stats_by_user')
+    path('get_stats/<int:user_id>/', get_network_stats_by_user, name='get_network_stats_by_user')
+
 ]

@@ -230,6 +230,7 @@ def preflight_check(request):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def add_network_stat(request):
+    user_id = request.data.get("user_id")
     ssid = request.data.get("ssid")
     rx_bytes = request.data.get("rx_bytes", 0)
     tx_bytes = request.data.get("tx_bytes", 0)
@@ -239,7 +240,7 @@ def add_network_stat(request):
 
     try:
         stat = NetworkStat.objects.create(
-            user=request.user,
+            user_id=user_id,
             ssid=ssid,
             rx_bytes=rx_bytes,
             tx_bytes=tx_bytes
